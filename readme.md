@@ -43,9 +43,56 @@ app.post('/login', function(req, res, next) {
 Then magically in your view, you have access to a `flash` variable.
 
 ```html
+<!-- template engine is nunjucks -->
 {% if flash.errors %}
   {% for error in flash %}
     <li>{{ error }}</li>
   {% endfor %}
 {% endif %}
+```
+
+## Sending back old input
+
+Send back the users input to be used in the form for the next request only
+
+Usage:
+
+```javascript
+const express = require('express');
+const session = require('express-session');
+const { old } = require('express-sesssion-helpers');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+// To accept form data
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+app.use(session({
+  secret: 'lol'
+}));
+
+// This needs to be AFTER app.use(session())
+app.use(old());
+
+app.post('/login', function(req, res, next) {
+  // do your validation
+  // if it fails e.g. because the user didnt fill out their name
+  // send back any validation errors using something like flash()
+  // and send back their old input to prefill the fields
+  req.sendBackInput();
+
+  res.redirect('/login');
+});
+
+// app.get('/login') etc...
+```
+
+Then magically in your view, you have access to am `old` variable.
+
+```html
+<!-- template engine is nunjucks -->
+<input type="email" name="email" value="{{ old.email if old.email else '' }}"
 ```
