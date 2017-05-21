@@ -1,6 +1,6 @@
 {
   "name": "express-session-helpers",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Set of helpers to enhance express-session",
   "main": "index.js",
   "scripts": {
