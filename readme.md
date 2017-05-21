@@ -4,6 +4,10 @@
 
 A set of utilities to help out with express sessions.
 
+# Installation
+
+`yarn add express express-session express-session-helpers`
+
 # Reference
 
 ## Session Flashing
@@ -45,7 +49,7 @@ Then magically in your view, you have access to a `flash` variable.
 ```html
 <!-- template engine is nunjucks -->
 {% if flash.errors %}
-  {% for error in flash %}
+  {% for error in flash.errors %}
     <li>{{ error }}</li>
   {% endfor %}
 {% endif %}
