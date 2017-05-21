@@ -1,0 +1,20 @@
+{
+  "name": "express-session-helpers",
+  "version": "0.0.1",
+  "description": "Set of helpers to enhance express-session",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "express",
+    "express-session",
+    "session",
+    "flash"
+  ],
+  "author": "nehero",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "jest": "^20.0.3"
+  }
+}
