@@ -4,7 +4,8 @@
   "description": "Set of helpers to enhance express-session",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "./node_modules/jest/bin/jest.js -u --coverage",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "keywords": [
     "express",
@@ -12,7 +13,14 @@
     "session",
     "flash"
   ],
-  "author": "nehero",
+  "author": {
+    "name": "nehero"
+  },
+  "homepage": "https://github.com/nehero/express-session-helpers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nehero/express-session-helpers.git"
+  },
   "license": "GPL-3.0",
   "devDependencies": {
     "jest": "^20.0.3"

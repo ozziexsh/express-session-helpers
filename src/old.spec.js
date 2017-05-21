@@ -70,4 +70,25 @@ describe('req.session.old', () => {
     });
   });
 
+  describe('sendBackInput()', () => {
+    it('should set the old input based on the request body', () => {
+      req.body = {
+        firstName: 'ozzie'
+      };
+
+      req.session = {};
+
+      old(req, res, next);
+
+      req.sendBackInput();
+
+      expect(req.session.old).toEqual({
+        count: 0,
+        data: {
+          firstName: 'ozzie'
+        }
+      });
+    });
+  });
+
 });
