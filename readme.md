@@ -1,5 +1,7 @@
 # express-session-helpers
 
+[![Travis](https://img.shields.io/travis/nehero/express-session-helpers.svg)](https://travis-ci.org/nehero/express-session-helpers) [![Coverage Status](https://coveralls.io/repos/nehero/express-session-helpers/badge.svg?branch=master)](https://coveralls.io/r/nehero/express-session-helpers?branch=master)
+
 A set of utilities to help out with express sessions.
 
 # Reference
