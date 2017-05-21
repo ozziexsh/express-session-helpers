@@ -6,7 +6,9 @@ describe('req.session.flash', () => {
 
   beforeEach(() => {
     req = {};
-    res = {};
+    res = {
+      locals: {}
+    };
     next = jest.fn();
     f = flash();
   });
@@ -62,6 +64,28 @@ describe('req.session.flash', () => {
     f(req, res, next);
     expect(req.session.flash.myKey).toBeUndefined();
     expect(req.session.flash.myOtherKey.count).toBe(1);
+  });
+
+  it('should set the flashed variable for all views', () => {
+    req.session = {
+      flash: {
+        myKey: {
+          count: 0,
+          data: 1
+        },
+
+        myOtherKey: {
+          count: 0,
+          data: 2
+        }
+      }
+    };
+
+    f(req, res, next);
+    expect(res.locals.flash).toEqual({
+      myKey: 1,
+      myOtherKey: 2
+    });
   });
 
   describe('flash()', () => {
